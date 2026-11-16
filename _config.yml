@@ -1,37 +1,35 @@
 # Site Information
-title: Tw93
-description: "记录做产品、写代码的经验，分享 AI 和开源工具，也写一些生活中的见闻与思考。"
-url: https://tw93.fun
-repo: tw93/tw93.github.io
+title: fishyue
+description: "由奢入俭难，由俭入奢易"
+url: https://blog.yuzhupeng.top
+repo: yuzhupeng/fishyue.github.io
 lang: zh-CN
 encoding: utf-8
-timezone: Africa/El_Aaiun
+timezone: Asia/Shanghai
 
 # Author Information (for SEO and AI crawlers)
 author:
-  name: Tw93
-  email: tw93@qq.com
-  url: https://tw93.fun
-  twitter: HiTw93
-  github: tw93
+  name: fishyue
+  email: a3363196@gmail.com
+  url: https://blog.yuzhupeng.top
+  twitter: ""
+  github: yuzhupeng
 
 # Social Media and External URLs
-github: tw93
-zhihu: tw93
-twitter: HiTw93
-v2ex: tw93
+github: yuzhupeng
+zhihu: ""
+twitter: ""
+v2ex: ""
 menu:
-  - title: "Blog"
+  - title: "博客"
     url: "/posts/"
-  - title: "Notes"
+  - title: "短记"
     url: "/notes/"
-  - title: "Weekly"
-    url: "https://weekly.tw93.fun/"
-  - title: "About"
+  - title: "关于"
     url: "/about.html"
 
 # SEO and Analytics
-google_analytics: G-KS7EDB6BRM
+google_analytics: ""
 
 # Build Settings
 paginate: 10
@@ -43,7 +41,7 @@ titlecase: true
 future: true
 highlighter: rouge
 markdown: kramdown
-permalink: /:year-:month-:day/:title.html
+permalink: /post/:title/
 sass:
   sass_dir: _sass
   style: compressed
@@ -57,14 +55,14 @@ webrick:
 collections:
   posts:
     output: true
-    permalink: /:year-:month-:day/:title.html
+    permalink: /post/:title/
   posts_en:
     output: true
-    permalink: /en/:year-:month-:day/:title.html
+    permalink: /en/post/:title/
     sort_by: date
 
 # `.well-known` is a dot-directory, so Jekyll skips it unless it is listed here.
-include: [".htaccess", ".well-known", "robots.txt", "llms.txt", "llms-full.txt", "api", "projects", "6ff2b87724ac930114bf05c74db50bb5.txt"]
+include: [".htaccess", "robots.txt"]
 exclude:
   [
     "Gemfile",
@@ -138,10 +136,10 @@ defaults:
         changefreq: monthly
 
 # Custom Site Settings
-showBuyCoffee: true
+showBuyCoffee: false
 # Email signup under each post, served by weekly.tw93.fun/api/subscribe.
 # Turn on only after a real signup and test send went through.
-newsletter: true
-payImage: //gw.alipayobjects.com/zos/k/vb/1.png
-assetUrl: //tw93.fun/images/
+newsletter: false
+payImage: ""
+assetUrl: ""
 defaultImage: data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==

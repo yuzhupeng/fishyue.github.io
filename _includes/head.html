@@ -13,10 +13,10 @@
   {% endif %}
   {% if page.layout == 'home' and page.is404 != true %}
     {% if is_english_surface %}
-      {% capture seo_title %}Tw93’s Blog{% if archive_page > 1 %} - Page {{ archive_page }}{% endif %}{% endcapture %}
+      {% capture seo_title %}fishyue 的博客{% if archive_page > 1 %} - Page {{ archive_page }}{% endif %}{% endcapture %}
       {% capture seo_description %}Notes on building products and writing code, AI and open-source tools, and observations and thoughts from everyday life.{% if archive_page > 1 %} Archive page {{ archive_page }}.{% endif %}{% endcapture %}
     {% else %}
-      {% capture seo_title %}Tw93 的博客{% if archive_page > 1 %} - 第 {{ archive_page }} 页{% endif %}{% endcapture %}
+      {% capture seo_title %}fishyue 的博客{% if archive_page > 1 %} - 第 {{ archive_page }} 页{% endif %}{% endcapture %}
       {% capture seo_description %}记录做产品、写代码的经验，分享 AI 和开源工具，也写一些生活中的见闻与思考。{% if archive_page > 1 %}当前为第 {{ archive_page }} 页。{% endif %}{% endcapture %}
     {% endif %}
     {% assign document_title = seo_title %}
@@ -71,13 +71,13 @@
   {% assign og_title = seo_title %}
   {% assign og_description = seo_description %}
   {% assign og_image = page.feature | default:
-  "https://tw93.fun/images/config/og.png" %}
+  "https://blog.yuzhupeng.top/images/config/og.png" %}
 
   <meta property="og:locale" content="{{ og_locale }}">
   {% if page.layout == "post" %}
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="article:author" content="{{ site.author.name | default: 'Tw93' }}">
+  <meta property="article:author" content="{{ site.author.name | default: 'fishyue' }}">
   {% if page.categories %}
   <meta property="article:section" content="{{ page.categories | first }}">
   {% endif %}
@@ -93,7 +93,7 @@
   <!-- Twitter Metadata -->
   {% if page.layout == "post" %}
   {% assign twitter_image = page.feature | default:
-  "https://gw.alicdn.com/imgextra/i3/O1CN01cSkdn72AKKBDPm829_!!6000000008184-2-tps-2664-2664.png" %}
+  "{{ site.url }}/images/config/og.png" %}
   <meta name="twitter:card" content="{% if page.feature %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:creator" content="@{{ site.twitter }}">
   <meta name="twitter:site" content="@{{ site.twitter }}">
@@ -157,7 +157,6 @@
 
   <!-- DNS Prefetch & Preconnect for Performance -->
   <link rel="dns-prefetch" href="https://gw.alipayobjects.com">
-  <link rel="dns-prefetch" href="https://gw.alicdn.com">
   <link rel="preconnect" href="https://gw.alipayobjects.com" crossorigin>
 
   <!-- Styles and Scripts -->
@@ -171,21 +170,21 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png"
-    href="https://gw.alicdn.com/imgextra/i4/O1CN01XYYPwL1uheeXASHIQ_!!6000000006069-2-tps-420-420.png">
+    href="{{ site.url }}/images/avatar.png">
 
   <!-- Additional Meta Tags -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta http-equiv="cleartype" content="on">
   <meta name="format-detection" content="telephone=no">
-  <meta name="author" content="Tw93">
+  <meta name="author" content="fishyue">
   <meta name="robots" content="{{ page.robots | default: 'index, follow' | escape }}">
 
   <!-- Feed -->
   <link href="{% if page.url contains '/en/' %}{{ site.url }}/en/feed.xml{% else %}{{ site.url }}/feed.xml{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
   {% if page.url contains '/notes/' %}
   <style>{% inline_css css/notes-page.scss %}</style>
-  <link href="{{ site.url }}/notes/feed.xml" type="application/atom+xml" rel="alternate" title="Tw93 Notes">
+  <link href="{{ site.url }}/notes/feed.xml" type="application/atom+xml" rel="alternate" title="fishyue 短记">
   <link rel="alternate" type="text/markdown" href="{{ site.url }}/notes.md" title="Markdown">
   {% endif %}
 
@@ -207,15 +206,10 @@
     "dateModified": {{ page.modified | default: page.date | date_to_xmlschema | jsonify }},
     "author": {
       "@type": "Person",
-      "name": {{ site.author.name | default: 'Tw93' | jsonify }},
+      "name": {{ site.author.name | default: 'fishyue' | jsonify }},
       "url": {{ site.author.url | default: site.url | jsonify }},
       "sameAs": [
-        "https://github.com/{{ site.author.github }}",
-        "https://x.com/{{ site.author.twitter }}",
-        "https://www.youtube.com/@HiTw93",
-        "https://www.zhihu.com/people/{{ site.zhihu }}",
-        "https://www.v2ex.com/member/{{ site.v2ex }}",
-        "https://yobi.tw93.fun"
+        "https://github.com/{{ site.author.github }}"
       ]
     },
     "publisher": {
@@ -223,7 +217,7 @@
       "name": {{ site.title | jsonify }},
       "logo": {
         "@type": "ImageObject",
-        "url": "https://gw.alicdn.com/imgextra/i4/O1CN01XYYPwL1uheeXASHIQ_!!6000000006069-2-tps-420-420.png"
+        "url": "{{ site.url }}/images/avatar.png"
       }
     },
     "description": {{ structured_description | jsonify }},
@@ -280,28 +274,23 @@
       {
         "@type": "Person",
         "@id": "{{ site.url }}/#person",
-        "name": "{{ site.author.name | default: 'Tw93' }}",
-        "alternateName": "Tw93",
+        "name": "{{ site.author.name | default: 'fishyue' }}",
+        "alternateName": "fishyue",
         "url": "{{ site.url }}",
         "email": "mailto:{{ site.author.email }}",
-        "jobTitle": "Product Engineer",
-        "description": "Product engineer from Hangzhou building small, fast, open source developer tools and macOS applications.",
-        "image": "https://gw.alicdn.com/imgextra/i4/O1CN01XYYPwL1uheeXASHIQ_!!6000000006069-2-tps-420-420.png",
+        "jobTitle": "",
+        "description": {{ site.description | jsonify }},
+        "image": "{{ site.url }}/images/avatar.png",
         "knowsAbout": ["Rust", "Swift", "TypeScript", "Go", "Shell", "Python", "macOS development", "AI coding workflows", "Product engineering", "Open source", "Design"],
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Hangzhou",
-          "addressRegion": "Zhejiang",
+          "addressLocality": "",
+          "addressRegion": "",
           "addressCountry": "CN"
         },
         "sameAs": [
-          "https://github.com/{{ site.author.github }}",
-          "https://x.com/{{ site.author.twitter }}",
-          "https://www.youtube.com/@HiTw93",
-          "https://www.zhihu.com/people/{{ site.zhihu }}",
-          "https://www.v2ex.com/member/{{ site.v2ex }}",
-          "https://yobi.tw93.fun"
-        ]
+          "https://github.com/{{ site.author.github }}"
+          ]
       },
       {
         "@type": "Organization",
@@ -312,7 +301,7 @@
         "founder": { "@id": "{{ site.url }}/#person" },
         "logo": {
           "@type": "ImageObject",
-          "url": "https://gw.alicdn.com/imgextra/i4/O1CN01XYYPwL1uheeXASHIQ_!!6000000006069-2-tps-420-420.png",
+          "url": "{{ site.url }}/images/avatar.png",
           "width": 420,
           "height": 420
         },
@@ -334,21 +323,18 @@
         ],
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Hangzhou",
-          "addressRegion": "Zhejiang",
+          "addressLocality": "",
+          "addressRegion": "",
           "addressCountry": "CN"
         },
         "sameAs": [
-          "https://github.com/{{ site.author.github }}",
-          "https://x.com/{{ site.author.twitter }}",
-          "https://www.youtube.com/@HiTw93",
-          "https://yobi.tw93.fun"
-        ]
+          "https://github.com/{{ site.author.github }}"
+          ]
       },
       {
         "@type": "SoftwareApplication",
         "name": "Pake",
-        "url": "https://github.com/tw93/Pake",
+        "url": "https://github.com/yuzhupeng/Pake",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS, Windows, Linux",
         "description": "Turn any web page into a lightweight desktop app with Rust and Tauri v2. Builds are typically under 10MB, nearly 20x smaller than Electron.",
@@ -360,7 +346,7 @@
       {
         "@type": "SoftwareApplication",
         "name": "Kaku",
-        "url": "https://github.com/tw93/Kaku",
+        "url": "https://github.com/yuzhupeng/Kaku",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS",
         "description": "GPU-accelerated macOS terminal emulator with a Rust core and Lua configuration, built for AI coding sessions.",
@@ -372,7 +358,7 @@
       {
         "@type": "SoftwareApplication",
         "name": "MiaoYan",
-        "url": "https://github.com/tw93/MiaoYan",
+        "url": "https://github.com/yuzhupeng/MiaoYan",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "macOS",
         "description": "Native Swift macOS markdown editor. Local-first plain files with no sync service or vault format, LaTeX and Mermaid built in.",
@@ -384,9 +370,9 @@
       {
         "@type": "SoftwareApplication",
         "name": "Mole",
-        "url": "https://github.com/tw93/Mole",
+        "url": "https://github.com/yuzhupeng/Mole",
         "subjectOf": { "@type": "WebPage", "url": "https://mole.fit/blog/mole-cli-vs-mac-app" },
-        "downloadUrl": "https://github.com/tw93/Mole/releases",
+        "downloadUrl": "https://github.com/yuzhupeng/Mole/releases",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "macOS",
         "description": "Free open source macOS CLI to clean, uninstall, optimize, analyze, and monitor a Mac. Every destructive command supports a dry run.",
@@ -436,8 +422,8 @@
       {
         "@type": "SoftwareSourceCode",
         "name": "Waza",
-        "url": "https://github.com/tw93/Waza",
-        "codeRepository": "https://github.com/tw93/Waza",
+        "url": "https://github.com/yuzhupeng/Waza",
+        "codeRepository": "https://github.com/yuzhupeng/Waza",
         "programmingLanguage": "Markdown",
         "description": "Reusable engineering skill pack for AI coding agents: review, debugging, design, writing, and research.",
         "license": "https://spdx.org/licenses/MIT.html",
@@ -447,8 +433,8 @@
       {
         "@type": "SoftwareSourceCode",
         "name": "Kami",
-        "url": "https://github.com/tw93/kami",
-        "codeRepository": "https://github.com/tw93/kami",
+        "url": "https://github.com/yuzhupeng/kami",
+        "codeRepository": "https://github.com/yuzhupeng/kami",
         "programmingLanguage": "Markdown",
         "description": "Document design system that typesets AI-generated content into PDFs, with bilingual Chinese and English typography.",
         "license": "https://spdx.org/licenses/MIT.html",
@@ -470,7 +456,7 @@
     "isPartOf": { "@id": "{{ site.url }}/#website" },
     "author": {
       "@type": "Person",
-      "name": "{{ site.author.name | default: 'Tw93' }}",
+      "name": "{{ site.author.name | default: 'fishyue' }}",
       "url": "{{ site.author.url | default: site.url }}"
     },
     "inLanguage": {{ document_language | jsonify }}

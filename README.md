@@ -1,57 +1,44 @@
-# [tw93.fun](https://tw93.fun)
+# fishyue 博客（blog.yuzhupeng.top）
 
-- This is Tw93's front-end technology blog.
-- Commonly used to record learning and research front-end technology.
-- Concerned about new technology and new thinking.
-- The blog theme named [cosy-jekyll-theme](https://rubygems.org/gems/cosy-jekyll-theme) is created by [Tw93](https://tw93.fun/about/).
+基于 [Tw93](https://tw93.fun) 的 Jekyll 主题（MIT 协议）改造的个人技术博客。
+原主题完整备份在 git tag `tw93-original-20261116`。
 
-## Features
+- 线上地址：https://blog.yuzhupeng.top
+- 文章源文：`_posts/*.md`
+- 构建：GitHub Actions（`.github/workflows/jekyll.yml`）
 
-- cosy-jekyll-theme is a responsive blog template providing a good reading experience.
-- **No jQuery**, no other redundant resources.
-- Modern and minimal design, **more concise and faster** than other jekyll theme.
-- **Responsive templates for post, page**, looks great on mobile, tablet, and desktop devices.
-- **Loading resources selectively on different platforms.**
-- Compress JavaScript and CSS.
-- By using SVG and Canvas makes this blog more geeks.
-- When running in pc,It will show a qrCode that you can read on mobile.
-- When the picture in articles is **too complicated to see it clearly，you can zoom it in full-screen.**
-- Funny [custom 404 page](https://tw93.fun/err),You will like it.
-- **More suitable for China**:
+## 快速开始
 
-  - Dropping google webfont, using proxy webfont.
-  - Delay loading of resources that are not immediately required.
-  - Add buy me a coffee by using weChat payment.
+```bash
+# 本机没有 Ruby 时，只能靠 push 触发 Actions 构建
+git add -A && git commit -m "更新文章" && git push
 
-## PC Preview
+# 若已装 Ruby 3.3+
+bundle install
+bundle exec jekyll serve      # 本地预览 http://127.0.0.1:4000
+```
 
-![demo.png](https://raw.githubusercontent.com/tw93/tw93.github.io/main/images/readme/pc-preview.jpg)
+## 目录速查
 
-## H5 Preview
+| 路径 | 作用 |
+|---|---|
+| `_posts/` | 文章源文，`YYYY-MM-DD-slug.md` |
+| `_layouts/` | 页面骨架：post 文章页、page 独立页、home 首页、notes 短记 |
+| `_includes/` | 头尾、搜索、评论、分页等片段 |
+| `_sass/` + `css/` | 样式，SCSS 编译后内联进 head |
+| `_plugins/` | 7 个 Ruby 插件（内联 CSS、图片尺寸、notes 生成等） |
+| `images/posts/` | 文章配图，从旧博客抽出的 42 张 |
+| `scripts/html2md.py` | 旧博客 HTML 转 Markdown 的脚本 |
 
-<img src="https://raw.githubusercontent.com/tw93/tw93.github.io/main/images/readme/h5-1.jpg" width="270"/><img src="https://raw.githubusercontent.com/tw93/tw93.github.io/main/images/readme/h5-2.jpg" width="270"/><img src="https://raw.githubusercontent.com/tw93/tw93.github.io/main/images/readme/h5-3.jpg" width="270"/>
+## 写一篇新文章
 
-## QR code
+1. 在 `_posts/` 新建 `YYYY-MM-DD-英文slug.md`
+2. 写 front matter（见 docs/writing.md）
+3. 正文用 Markdown
+4. 图片放 `images/posts/<slug>/`，正文用 `/images/posts/<slug>/xxx.png` 引用
+5. commit + push，等 Actions 约 1-2 分钟
 
-<img src="https://raw.githubusercontent.com/tw93/tw93.github.io/main/images/readme/qrcode.png" width="200"/>
+## 相关文档
 
-## How To Use
-
-1. [Fork the repo](https://github.com/tw93/tw93.github.io)
-2. Clone down the repo with `$ git clone git@github.com:username/reponame.git`
-3. Install bundler with `$ gem install bundler`
-4. Install gems with `$ bundle install`
-5. Run jekyll with `$ npm run dev`
-6. Begin hacking for your project,You need modify `about.md` and `_config.yml`
-7. For more details, read [documentation](http://jekyllrb.com/)
-
-## Support
-
-- **Feel free to fork. I'll appreciate it if you keep the author & github link at footer**.
-- Give it **a star** if you like, fork or just clone to use.
-- Having a problem getting something to work or want to know why I setup something in a certain way? [File a GitHub Issue](https://github.com/tw93/tw93.github.io/issues/new).
-- If you make something cool with this theme feel free to let me know.
-
-## License
-
-- The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+- 写作手册：docs/writing.md
+- 改造记录：docs/migration.md

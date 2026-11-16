@@ -1,5 +1,5 @@
 /**
- * Created by Tw93 on 2017/1/31.
+ * Created by fishyue on 2017/1/31.
  */
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var stripCfResize = function (url) {
         if (!url || typeof url !== 'string') return url;
-        // https://cdn.tw93.fun/cdn-cgi/image/<opts>/<path> -> https://cdn.tw93.fun/<path>
+        // https://cdn.blog.yuzhupeng.top/cdn-cgi/image/<opts>/<path> -> https://cdn.blog.yuzhupeng.top/<path>
         return url.replace(/\/cdn-cgi\/image\/[^/]+\//, '/');
       };
 

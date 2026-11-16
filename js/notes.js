@@ -117,7 +117,7 @@
     var sized = img.tagName === 'IMG' && /\/notes\/\d+\/([\w-]+)\.webp$/.exec(img.currentSrc || img.src);
     if (!sized) return;
     img.removeAttribute('srcset');
-    img.src = 'https://cdn.tw93.fun/notes/' + sized[1] + '.jpg';
+    img.src = 'https://cdn.blog.yuzhupeng.top/notes/' + sized[1] + '.jpg';
   }, true);
   list.addEventListener('play', function (e) {
     if (e.target.closest('.note-gif')) return;

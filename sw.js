@@ -1,13 +1,13 @@
-const CACHE_NAME = "tw93-cache-v1";
+const CACHE_NAME = "fishyue-cache-v1";
 // Posts rarely change after publishing, so repeat visits are served from cache
 // at once and refreshed in the background. Home and list pages stay on the
 // network so a new post shows up immediately.
-const PAGE_CACHE = "tw93-pages-v1";
+const PAGE_CACHE = "fishyue-pages-v1";
 const PAGE_CACHE_LIMIT = 40;
-const POST_PAGE = /^\/(?:en\/)?\d{4}-\d{2}-\d{2}\/[^/]+\.html$/;
+const POST_PAGE = /^\/post\/[^/]+\/$/;
 const FONT_BASE_URL = "https://gw.alipayobjects.com/os/k/jinkai/";
 const IMMUTABLE_ASSETS = [
-  "https://gw.alicdn.com/imgextra/i4/O1CN01XYYPwL1uheeXASHIQ_!!6000000006069-2-tps-420-420.png", // Favicon/Logo
+  "/images/avatar.png", // Logo
 ];
 
 self.addEventListener("install", (event) => {

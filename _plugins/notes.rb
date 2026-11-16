@@ -3,7 +3,7 @@ require 'fileutils'
 require 'json'
 require 'time'
 
-# /notes/: every original post from @HiTw93 on X, plus the replies worth
+# /notes/: every original post from @ on X, plus the replies worth
 # keeping, built from _data/notes.json (written by scripts/notes.py from the
 # local X export). Each note is rendered to HTML once here and reused by:
 # - /notes/, the newest notes with search, filters and sorting in js/notes.js;
@@ -17,14 +17,14 @@ require 'time'
 # English and an English interface; the note pages stay at /notes/<id>.html.
 module Jekyll
   module Notes
-    SITE_URL = 'https://tw93.fun'.freeze
+    SITE_URL = 'https://blog.yuzhupeng.top'.freeze
     POEM = '人生到處知何似，應似飛鴻踏雪泥'.freeze
     FIRST_PAGE = 30
     FOLD_CHARS = 360
     # A folded note keeps about as much text as X shows before Show more:
     # 280 in X's count, where a CJK character weighs two.
     PREVIEW_WEIGHT = 280
-    AVATAR = 'https://cdn.tw93.fun/notes/avatar.jpg'.freeze
+    AVATAR = 'https://cdn.blog.yuzhupeng.top/notes/avatar.jpg'.freeze
     ZONE = '+08:00'.freeze
     CATEGORIES = {
       'ai' => 'AI', 'tools' => '工具', 'learn' => '学习',
@@ -153,7 +153,7 @@ module Jekyll
     # use their own name= sizes.
     def thumb(src, width)
       if (key = src[MIRRORED, 1])
-        "https://cdn.tw93.fun/notes/#{width}/#{key}.webp"
+        "https://cdn.blog.yuzhupeng.top/notes/#{width}/#{key}.webp"
       else
         src.sub('name=large', width > 700 ? 'name=medium' : 'name=small')
       end
@@ -165,7 +165,7 @@ module Jekyll
     # plan's 5000 transformations a month, and the rest answered 429
     # (2026-10-28).
     WIDTHS = [680, 1200].freeze
-    MIRRORED = %r{\Ahttps://cdn\.tw93\.fun/notes/([A-Za-z0-9_-]+)\.jpg\z}.freeze
+    MIRRORED = %r{\Ahttps://cdn\.yuzhupeng\.fun/notes/([A-Za-z0-9_-]+)\.jpg\z}.freeze
 
     def img_attrs(src, sizes)
       return %(src="#{esc(thumb(src, 1200))}") unless src.match?(MIRRORED)
@@ -337,7 +337,7 @@ module Jekyll
       folded = fold && !note['article'] && full_text(note).length > FOLD_CHARS
       time = local(note['date'])
       category = ui['categories'].fetch(note['category'])
-      meta = [%(<span class="note-name">Tw93</span>), %(<a class="note-date" href="#{page_url(note)}"><time datetime="#{time.iso8601}">#{time.strftime('%Y-%m-%d')}</time></a>)]
+      meta = [%(<span class="note-name">fishyue</span>), %(<a class="note-date" href="#{page_url(note)}"><time datetime="#{time.iso8601}">#{time.strftime('%Y-%m-%d')}</time></a>)]
       if (reply = note['reply_to'])
         label = reply['user'] ? "#{ui['reply_to']} @#{esc(reply['user'])}" : ui['reply']
         meta << %(<a href="#{esc(reply['url'])}" target="_blank" rel="nofollow noopener">#{label}</a>)
@@ -456,7 +456,7 @@ module Jekyll
           site.pages << Notes.make_page(site, list['dir'], 'index.html', common.merge(
             'layout' => 'notes', 'title' => 'Notes', 'notes_index' => true,
             'lang_equivalent' => lang == 'en' ? UI['zh']['root'] : UI['en']['root'],
-            'summary' => lang == 'en' ? "#{group.size} short posts Tw93 wrote in English on X since #{since}, searchable, filterable by category and sortable by likes." : "Tw93 在 X 上写下的 #{group.size} 条日常思考和碎碎念，从 #{since} 年至今，可以搜索、按分类查找和按点赞排序。",
+            'summary' => lang == 'en' ? "#{group.size} short posts fishyue wrote in English on X since #{since}, searchable, filterable by category and sortable by likes." : "fishyue 在 X 上写下的 #{group.size} 条日常思考和碎碎念，从 #{since} 年至今，可以搜索、按分类查找和按点赞排序。",
             'notes_years' => months.keys.map { |key| key[0, 4] }.uniq.sort.reverse,
             'notes_categories' => ui['categories'].filter_map { |key, label| { 'key' => key, 'label' => label } if group.any? { |note| note['category'] == key } },
             'notes_html' => Notes.eager(group.first(FIRST_PAGE).map { |note| html[note['id']] }.join),
@@ -471,7 +471,7 @@ module Jekyll
             size = months[key].size
             site.pages << Notes.make_page(site, "#{list['dir']}/#{year}/#{month}", 'index.html', common.merge(
               'layout' => 'notes', 'title' => "#{label} Notes",
-              'summary' => lang == 'en' ? "#{size} note#{size == 1 ? '' : 's'} Tw93 wrote in English on X in #{label}." : "Tw93 #{label}在 X 上写下的 #{size} 条 Notes。",
+              'summary' => lang == 'en' ? "#{size} note#{size == 1 ? '' : 's'} fishyue wrote in English on X in #{label}." : "fishyue #{label}在 X 上写下的 #{size} 条 Notes。",
               'notes_month' => label,
               'notes_html' => Notes.eager(months[key].map { |note| html[note['id']] }.join),
               'notes_newer' => newer && { 'url' => "#{ui['root']}#{newer.tr('-', '/')}/", 'label' => Notes.month_label(newer[0, 4], newer[5, 2], ui) },
@@ -502,7 +502,7 @@ module Jekyll
               'articleBody' => Notes.full_text(note),
               'datePublished' => time.iso8601,
               'inLanguage' => note['lang'] == 'und' ? 'zh' : note['lang'],
-              'author' => { '@type' => 'Person', '@id' => "#{SITE_URL}/#person", 'name' => 'Tw93', 'url' => SITE_URL },
+              'author' => { '@type' => 'Person', '@id' => "#{SITE_URL}/#person", 'name' => 'fishyue', 'url' => SITE_URL },
               'interactionStatistic' => [
                 { '@type' => 'InteractionCounter', 'interactionType' => 'https://schema.org/LikeAction', 'userInteractionCount' => note.dig('metrics', 'like').to_i },
                 { '@type' => 'InteractionCounter', 'interactionType' => 'https://schema.org/CommentAction', 'userInteractionCount' => note.dig('metrics', 'reply').to_i },
@@ -558,21 +558,21 @@ module Jekyll
       <<~XML
         <?xml version="1.0" encoding="utf-8"?>
         <feed xmlns="http://www.w3.org/2005/Atom">
-          <title>Tw93 Notes</title>
+          <title>fishyue 短记</title>
           <link href="#{SITE_URL}/notes/"/>
           <link rel="self" href="#{SITE_URL}/notes/feed.xml"/>
           <id>#{SITE_URL}/notes/</id>
           <updated>#{updated}</updated>
-          <author><name>Tw93</name><uri>#{SITE_URL}</uri></author>
+          <author><name>fishyue</name><uri>#{SITE_URL}</uri></author>
         #{entries.join}</feed>
       XML
     end
 
     def markdown(notes, months)
       lines = [
-        '# Tw93 Notes',
+        '# fishyue 短记',
         '',
-        "> #{notes.size} short posts by Tw93 from X (@HiTw93), originals plus well-received replies, #{months.keys.min} to #{months.keys.max}. Mostly Chinese. Each note has its own page at https://tw93.fun/notes/{id}.html.",
+        "> #{notes.size} short posts by fishyue from X (@), originals plus well-received replies, #{months.keys.min} to #{months.keys.max}. Mostly Chinese. Each note has its own page at https://blog.yuzhupeng.top/notes/{id}.html.",
         '',
         "- Every note with full text, one JSON object per line: #{SITE_URL}/api/notes.jsonl",
         "- Browse and search: #{SITE_URL}/notes/",

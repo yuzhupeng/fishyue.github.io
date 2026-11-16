@@ -1,42 +1,25 @@
 ---
 layout: page
 title: 关于我
-poem: 且將新火試新茶，詩酒趁年華
+poem: 由奢入俭难，由俭入奢易
 permalink: /about.html
 hideHomeActive: true
-lang_equivalent: /en/about.html
-summary: 来自杭州的产品工程师，做简洁好用的小工具让生活更简单，会一点 Swift、Rust、JavaScript、Python、Shell 和设计。
+summary: 后端工程师，写 Java、C# 和 Vue，习惯把学到的整理成笔记。
 ---
 
 ## 关于我
 
-来自杭州的产品工程师，做简洁好用的小工具让生活更简单，会一点 Swift、Rust、JavaScript、Python、Shell 和设计。
+后端工程师，主要写 Java / Spring Boot 和 C#，也做一些 Vue 前端。平时喜欢把工作中遇到的东西整理成笔记，尤其是数据库、架构和工程实践方面的内容。
 
-喜欢开源，相信 AI，也在投资 AI，不喜欢技术网红环境，相信长期主义。在 [**Tw93**](https://tw93.fun/) 博客沉淀技术和生活思考，用 [**潮流周刊**](https://weekly.tw93.fun/) 每周发一些看到的好东西。
+这个博客起步于 2019 年，早期用它记录学习过程，后来慢慢变成自己的技术笔记本。写下来的东西不一定都对，但至少都是自己踩过或验证过的。
 
-## 开源小家庭
+## 这里会写什么
 
-<figure class="center">
-  <img src="https://cdn.tw93.fun/images/open-source-family-20261021.png" alt="Tw93 Open Source Family" style="width:100%">
-</figure>
-
-我喜欢在长假里折腾新项目，于是这些“家人”基本都诞生在春节、五一、国庆这些假期里：
-
-- [**Kaku**](https://github.com/tw93/Kaku) 是爸爸，2026 年过年期间写出来的，主要在写代码、终端、构建，AI 时代可靠能干，把家庭支撑得好好的。
-- [**Pake**](https://github.com/tw93/Pake) 是妈妈，2022 年国庆里出生，一直默默无闻地打包、整理、交付成 App，温和且利落，家里几个孩子最喜欢的就是妈妈。
-- [**MiaoYan**](https://github.com/tw93/MiaoYan) 是哥哥，2020 年春节里写的，比较懂事沉稳，喜欢写作、Markdown、沉淀思考，一个安静的小伙子，会思考，有自己的主见，不追风不随波逐流。
-- [**Waza**](https://github.com/tw93/Waza) 是姐姐，2026 年春日里出生，和妈妈性格很像，干练，小时候去学过跆拳道，爱学习，通过不断练习总结让技能越来越好，练到本能。
-- [**Kami**](https://github.com/tw93/Kami) 是妹妹，2026 年一个春天的周末出生，家里最年轻的小可爱，轻快，爱笑，明亮的小女孩，爱把家里收拾得整整齐齐，喜欢画漂亮的画，虽然小，但很能给人温暖。
-- [**Mole**](https://github.com/tw93/Mole) 是家里的宠物鼹鼠，2025 年国庆前在三亚泳池边游泳带回家的，圆滚滚的，带着小头灯拿着小铲子，喜欢翻箱倒柜钻角落，找到不需要的东西帮忙扔掉，很爱干净，一直陪伴着我们。
-
-后来 Mole 有了原生的 Mac 版本 [Mole for Mac](https://mole.fit)，一次买断 19 美元，是我第一个付费产品，命令行版本还是免费开源的。
+- **数据库**：MySQL 索引与慢查询、大数据量表的优化、Elasticsearch 与 Redis 的使用场景
+- **架构与设计**：领域建模、SaaS 多租户、.NET 微服务演进、消息中间件
+- **语言与框架**：Java/Spring Boot、C#、Vue 的工程实践
+- **思维方式**：程序员的底层思维、如何抽象出领域对象
 
 ## 关注我
 
 - [GitHub](https://github.com/{{site.github}})
-- [Twitter](https://x.com/{{site.twitter}})
-- [YouTube](https://www.youtube.com/@HiTw93)
-- [知乎](https://www.zhihu.com/people/{{site.zhihu}})
-- [V2EX](https://www.v2ex.com/member/{{site.v2ex}})
-
-{% include buy-me-coffee.html %}

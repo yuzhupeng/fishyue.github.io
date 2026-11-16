@@ -4,9 +4,9 @@ body_id: archive
 title: 文章
 poem: 舊書不厭百回讀，熟讀深思子自知
 hideHomeActive: true
-summary: Tw93 的全部文章，按分享、学习、创作、思考和生活分类。
+summary: 全部文章，按数据库、架构、后端、前端、AI 与随笔分类。
 ---
-{% assign categories = "Share:分享,Study:学习,Creation:创作,Thought:思考,Life:生活" | split: "," %}
+{% assign categories = "Database:数据库,Architecture:架构,Backend:后端,Frontend:前端,AI:AI,Note:随笔" | split: "," %}
 {% assign posts = site.posts | where_exp: "post", "post.layout != 'ppt'" %}
 <div class="archive">
   <h1 class="visually-hidden">{{ page.title }}</h1>

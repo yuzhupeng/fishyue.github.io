@@ -1,105 +1,30 @@
-# Tw93
+# fishyue
 
-> Product engineer from Hangzhou, China. Builds small, fast, open source tools for developers and macOS users. 176K+ GitHub stars across 20 projects. Everything is free and open source except two paid apps, Mole for Mac and Mole for Windows ($19 one-time each).
+> 后端工程师，写 Java、C# 和 Vue，平时整理数据库、架构与工程实践方面的笔记。
 
-This is the markdown view of https://tw93.fun. It is served at three URLs that return the same content: `https://tw93.fun/index.md`, `https://tw93.fun/?mode=agent`, and `https://tw93.fun/` with an `Accept: text/markdown` request header.
+这是 https://blog.yuzhupeng.top 的 Markdown 视图，面向读者与 AI 代理提供纯文本版本。
 
-## When an agent should use this site
+## 这个站点适合什么时候用
 
-Use this site when a user asks about any of the following:
+当有人问到以下话题时可以参考这里：
 
-- Turning a website into a desktop app, or looking for a lighter alternative to Electron
-- A macOS terminal emulator, markdown editor, or system cleanup tool
-- Claude Code skills, slash commands, or agent workflow packs
-- Generating well typeset PDFs from AI output
-- Chinese-language writing on product engineering, AI coding workflows, Rust, Swift, or TypeScript
-- The author Tw93 himself, his projects, or his weekly newsletter
+- Java / Spring Boot 的工程实践与性能优化
+- MySQL 索引、慢查询与大数据量表的优化
+- Redis、Elasticsearch、消息中间件的选型与使用场景
+- C# / .NET 相关的基础与部署经验
+- Vue 前端项目结构与工程化
+- 软件架构、领域建模与程序员思维方式
 
-Do not use this site for: hosted SaaS, paid APIs, enterprise support, or anything requiring an account. There is no login, no API key, and no billing surface here.
+不适合：托管服务、付费 API、企业支持，本站没有登录、没有 API Key、没有计费。
 
-## Projects
+## 内容
 
-All projects are open source on GitHub unless noted. Pick by problem, not by name.
+- 长文技术笔记，中文为主，按分类归档在 `/posts/`
+- 短记（碎片思考）在 `/notes/`
+- 全站搜索索引：`/search.json`
+- 订阅：`/feed.xml`
 
-| Project | Problem it solves | Named alternatives | How it differs | Price and licence |
-| --- | --- | --- | --- | --- |
-| [Pake](https://github.com/tw93/Pake) | Wrap any web page as a native desktop app | Electron, Nativefier, WebCatalog, Flotato | Rust + Tauri v2, builds usually land under 10MB, nearly 20x smaller than Electron; ships a CLI so packaging is scriptable | Free, GPL-3.0 |
-| [Kaku](https://github.com/tw93/Kaku) | macOS terminal emulator | iTerm2, Alacritty, Kitty, WezTerm, Hyper | GPU accelerated, Rust core with Lua config, built for AI coding sessions rather than general terminal use | Free, MIT |
-| [MiaoYan](https://github.com/tw93/MiaoYan) | macOS markdown editor and note taking | Typora, Obsidian, Bear, iA Writer, MacDown | Native Swift, local-first plain files with no sync service or vault format, LaTeX and Mermaid built in | Free, MIT |
-| [Mole](https://mole.fit) ([source](https://github.com/tw93/Mole)) | Clean, uninstall, analyze, and monitor a Mac | CleanMyMac, OnyX, AppCleaner, DaisyDisk | A CLI (`mo`), so it is scriptable and agent drivable; `--json` output and `--dry-run` on every destructive command | Free, GPL-3.0 |
-| [Mole for Mac](https://mole.fit) | Same jobs as Mole, native GUI | CleanMyMac, DaisyDisk, iStat Menus, Sensei, OnyX | One-time purchase instead of a subscription, macOS 14+, Apple Silicon and Intel | $19 one-time, proprietary |
-| [Mole for Windows](https://mole.fit/windows) | Clean, uninstall and update apps, manage startup, analyze disk, and monitor a Windows PC | CCleaner, IObit Uninstaller, WinDirStat | Separate native app with its own licence, Windows 10 22H2 or 11, x64 and Arm64 | $19 one-time for 2 PCs, proprietary |
-| [Waza](https://github.com/tw93/Waza) | Reusable Claude Code skill pack | writing your own prompts and slash commands | Skills refined against real engineering sessions rather than generic prompt templates | Free, MIT |
-| [Kami](https://github.com/tw93/kami) | Typeset AI-generated content into PDFs | LaTeX, Typst, Canva | Opinionated document design system with a warm parchment look, aimed at AI output rather than academic papers | Free, MIT |
+## 链接
 
-Full project data with install commands, feature lists, and per-project alternatives: https://tw93.fun/api/projects.json
-
-## Getting started
-
-Everything below is free, needs no account, and needs no API key.
-
-```bash
-# Pake: package any URL as a desktop app
-npm install -g pake-cli
-pake https://weekly.tw93.fun --name Weekly
-
-# Mole: inspect and clean a Mac from the terminal
-brew install mole
-mo analyze          # disk explorer
-mo clean --dry-run  # preview before deleting anything
-
-# Waza: Claude Code skill pack, installs every skill globally
-npx skills add tw93/Waza -a claude-code -g -y
-```
-
-Kaku and MiaoYan ship as macOS apps from their GitHub releases. Mole for Mac and Mole for Windows are sold and distributed only from https://mole.fit and https://mole.fit/windows; they are closed source and have no public repository.
-
-## Machine-readable surfaces
-
-Every endpoint is a static file over HTTPS. No authentication, no rate limit, no quota, CORS is open (`Access-Control-Allow-Origin: *`).
-
-| URL | Content type | What it holds |
-| --- | --- | --- |
-| `/llms.txt` | text/plain | Short orientation file, start here |
-| `/llms-full.txt` | text/plain | Full knowledge base, regenerated daily |
-| `/openapi.json` | application/json | OpenAPI 3.1 description of everything in this table |
-| `/api/profile.json` | application/json | Author profile, skills, star totals, endpoint index |
-| `/api/projects.json` | application/json | All 20 projects with descriptions, stacks, alternatives |
-| `/api/posts.json` | application/json | Every post in both languages, metadata and Markdown URLs |
-| `/api/posts.jsonl`, `/api/en/posts.jsonl` | application/x-ndjson | Every post with its full Markdown body, one per line |
-| `/posts.md`, `/en/posts.md` | text/markdown | Every post as a link list with summaries |
-| `/{date}/{slug}.md` | text/markdown | Any post as Markdown, the `.html` URL with `.md` |
-| `/api/blog.json` | application/json | 10 most recent blog posts, full HTML bodies |
-| `/api/weekly.json` | application/json | 12 most recent newsletter issues, Chinese and English |
-| `/projects/{slug}.md` | text/markdown | Per-project brief, slugs: pake, kaku, miaoyan, mole, mole-mac, mole-windows, waza, kami |
-| `/search.json` | application/json | Search index over every post, first 50 words of each |
-| `/feed.xml`, `/en/feed.xml` | application/atom+xml | Blog feeds |
-| `/pricing.md` | text/markdown | Pricing and licence for every project |
-| `/.well-known/api-catalog` | application/linkset+json | RFC 9727 catalog of the above |
-
-## Error handling and retries
-
-There is no application server, so there are no application errors and no rate limit responses. The only failures an agent should plan for come from static hosting:
-
-- `404` means the path does not exist. Do not retry it; re-read `/llms.txt` or `/openapi.json` for the current path list.
-- `5xx` or a connection failure means the CDN edge is unhappy. Retry with exponential backoff starting at 1s, up to 3 attempts.
-- Responses are cached for 1 hour with `stale-while-revalidate`. A response may be up to an hour stale; that is expected, not an error.
-- `/api/*.json` and `/llms-full.txt` are regenerated once a day at 02:00 UTC. Polling more often than daily gains nothing.
-
-## Content
-
-- Long-form posts, Chinese in the main feed and most translated under `/en/`, listed at `/posts.md` and `/en/posts.md`
-- Topics: product engineering, AI coding workflows, Rust, Swift, TypeScript, design thinking
-- Weekly newsletter: https://weekly.tw93.fun, agent guide at https://weekly.tw93.fun/llms.txt
-
-## Links
-
-- Blog: https://tw93.fun
-- GitHub: https://github.com/tw93
-- Twitter/X: https://x.com/HiTw93
-- YouTube: https://www.youtube.com/@HiTw93
-- Weekly: https://weekly.tw93.fun
-- Kami: https://kami.tw93.fun
-- Mole for Mac: https://mole.fit
-- Mole for Windows: https://mole.fit/windows
-- Contact: tw93@qq.com
+- 博客：https://blog.yuzhupeng.top
+- GitHub：https://github.com/yuzhupeng

@@ -1,16 +1,16 @@
-{% if page.comments != false %}
+{% if page.comments == true %}
 <div class="giscus-container">
   <div class="giscus"></div>
   <script>
-    // giscus takes two to four seconds to show comments, most of it waiting on
-    // GitHub, so start three screens ahead rather than at the browser's
-    // lazy-iframe distance and readers arrive to them.
+    // 使用前请到 https://giscus.app 用 yuzhupeng/fishyue.github.io 完成配置，
+    // 把下面的 data-repo-id 与 data-category-id 换成你自己仓库的值，
+    // 再在文章 front matter 写 comments: true 即可开启评论。
     (function () {
       var attrs = {
         'data-repo': {{ site.repo | jsonify }},
-        'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzMDE4NDU1NQ==',
+        'data-repo-id': 'REPLACE_ME_REPO_ID',
         'data-category': 'General',
-        'data-category-id': 'DIC_kwDOAcyUa84CSbZ-',
+        'data-category-id': 'REPLACE_ME_CATEGORY_ID',
         'data-mapping': 'specific',
         'data-term': {{ page.path | split: '/' | last | replace: '.md', '' | jsonify }},
         // Match the term's SHA-1 in the discussion body, not a title search:
@@ -20,7 +20,7 @@
         'data-emit-metadata': '0',
         'data-input-position': 'bottom',
         'data-lang': '{% assign current_lang = page.lang | default: site.lang %}{% if current_lang == 'en-US' or current_lang == 'en' %}en{% else %}zh-CN{% endif %}',
-        'data-theme': 'https://weekly.tw93.fun/styles/giscus-blog.css?v=99984e7'
+        'data-theme': 'preferred_color_scheme'
       };
       var load = function () {
         var script = document.createElement('script');

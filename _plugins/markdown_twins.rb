@@ -16,7 +16,7 @@ require 'json'
 # PPT posts (layout: ppt, hidden from the feed) are left out.
 module Jekyll
   module MarkdownTwins
-    SITE_URL = 'https://tw93.fun'.freeze
+    SITE_URL = 'https://blog.yuzhupeng.top'.freeze
 
     # By :post_write doc.content is rendered HTML, so the Markdown source is
     # kept from :post_read, before Liquid and the converter run.
@@ -78,7 +78,7 @@ module Jekyll
       lines = ["# #{meta['title']}", '']
       lines += ["> #{meta['summary']}", ''] unless meta['summary'].empty?
       lines << "- #{english ? 'Published' : '发布日期'}: #{meta['date']}"
-      lines << "- Author: Tw93"
+      lines << "- Author: fishyue"
       lines << "- HTML: #{meta['url']}"
       if counterpart
         lines << "- #{english ? 'Chinese original' : 'English translation'}: #{meta['translation']['markdownUrl']}"
@@ -90,9 +90,9 @@ module Jekyll
 
     def self.index(english, docs, pairs)
       lines = [
-        english ? '# Tw93 blog posts' : '# Tw93 博客文章',
+        english ? '# fishyue blog posts' : '# fishyue 博客文章',
         '',
-        english ? "> #{docs.size} English posts by Tw93, newest first. Append `.md` to a post URL, or follow the markdown link, for the full text." : "> Tw93 的 #{docs.size} 篇中文文章，按时间倒序。每篇的 `.html` 换成 `.md` 就是 Markdown 全文。",
+        english ? "> #{docs.size} English posts by fishyue, newest first. Append `.md` to a post URL, or follow the markdown link, for the full text." : "> fishyue 的 #{docs.size} 篇中文文章，按时间倒序。每篇的 `.html` 换成 `.md` 就是 Markdown 全文。",
         '',
         "- #{english ? 'Full text of every post, one JSON object per line' : '全部文章全文 JSON Lines'}: #{SITE_URL}/api#{english ? '/en' : ''}/posts.jsonl",
         "- #{english ? 'Metadata of every post' : '全部文章元数据'}: #{SITE_URL}/api/posts.json",
@@ -131,7 +131,7 @@ module Jekyll
 
       write(site, 'api/posts.json', JSON.pretty_generate(
         'site' => SITE_URL,
-        'description' => "Every post on Tw93's blog, Chinese and English, newest first. Full text: /api/posts.jsonl and /api/en/posts.jsonl, or the markdownUrl of a post.",
+        'description' => "Every post on fishyue's blog, Chinese and English, newest first. Full text: /api/posts.jsonl and /api/en/posts.jsonl, or the markdownUrl of a post.",
         'count' => zh.size,
         'englishCount' => en.size,
         'posts' => (zh + en).sort_by { |doc| [-doc.date.to_i, doc.collection.label] }.map { |doc| record(doc, pairs[doc]) },

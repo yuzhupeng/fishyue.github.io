@@ -12,7 +12,7 @@ module Jekyll
 
     # Cloudflare R2 custom domain. R2 does NOT support ?x-oss-process=; it uses
     # Cloudflare's /cdn-cgi/image/ URL transformations instead (auto webp/avif).
-    CF_DOMAIN = 'cdn.tw93.fun'
+    CF_DOMAIN = 'cdn.blog.yuzhupeng.top'
     CF_PREFIX = "https://#{CF_DOMAIN}/".freeze
     CF_TRANSFORM = 'width=2000,quality=80,format=auto,fit=scale-down'.freeze
     # Photos made locally at 2000px WebP with the EXIF (GPS included) stripped.
@@ -25,7 +25,7 @@ module Jekyll
       return url if url.nil? || url.empty?
       return url if url =~ /\.(svg|gif)$/i
 
-      # cdn.tw93.fun (Cloudflare R2) -> /cdn-cgi/image/ transformation.
+      # cdn.blog.yuzhupeng.top (Cloudflare R2) -> /cdn-cgi/image/ transformation.
       if url.start_with?(CF_PREFIX)
         return url if url.include?('/cdn-cgi/image/') || url.start_with?(CF_PRESIZED)
         rest = url[CF_PREFIX.length..-1]
