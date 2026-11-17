@@ -10,9 +10,10 @@ module Jekyll
       'img.alicdn.com'
     ]
 
-    # Cloudflare R2 custom domain. R2 does NOT support ?x-oss-process=; it uses
-    # Cloudflare's /cdn-cgi/image/ URL transformations instead (auto webp/avif).
-    CF_DOMAIN = 'cdn.blog.yuzhupeng.top'
+    # 站点目前没有自有图片 CDN，下面这组常量留作扩展位：以后接入 Cloudflare R2
+    # 之类的镜像域名时，把 CF_DOMAIN 改成实际域名即可启用 /cdn-cgi/image/ 变换。
+    # 保持占位值可确保当前任何图片 URL 都不会命中该分支。
+    CF_DOMAIN = 'cdn.example.invalid'
     CF_PREFIX = "https://#{CF_DOMAIN}/".freeze
     CF_TRANSFORM = 'width=2000,quality=80,format=auto,fit=scale-down'.freeze
     # Photos made locally at 2000px WebP with the EXIF (GPS included) stripped.
@@ -25,7 +26,7 @@ module Jekyll
       return url if url.nil? || url.empty?
       return url if url =~ /\.(svg|gif)$/i
 
-      # cdn.blog.yuzhupeng.top (Cloudflare R2) -> /cdn-cgi/image/ transformation.
+      # 自有 CDN（Cloudflare R2 等）-> /cdn-cgi/image/ transformation。
       if url.start_with?(CF_PREFIX)
         return url if url.include?('/cdn-cgi/image/') || url.start_with?(CF_PRESIZED)
         rest = url[CF_PREFIX.length..-1]

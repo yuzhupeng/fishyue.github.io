@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var stripCfResize = function (url) {
         if (!url || typeof url !== 'string') return url;
-        // https://cdn.blog.yuzhupeng.top/cdn-cgi/image/<opts>/<path> -> https://cdn.blog.yuzhupeng.top/<path>
+        // 去掉任意 CDN 的 /cdn-cgi/image/<opts>/ 前缀，还原原始图片地址
         return url.replace(/\/cdn-cgi\/image\/[^/]+\//, '/');
       };
 

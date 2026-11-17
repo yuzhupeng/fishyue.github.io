@@ -24,7 +24,7 @@ module Jekyll
     # A folded note keeps about as much text as X shows before Show more:
     # 280 in X's count, where a CJK character weighs two.
     PREVIEW_WEIGHT = 280
-    AVATAR = 'https://cdn.blog.yuzhupeng.top/notes/avatar.jpg'.freeze
+    AVATAR = "#{SITE_URL}/images/avatar.png".freeze
     ZONE = '+08:00'.freeze
     CATEGORIES = {
       'ai' => 'AI', 'tools' => '工具', 'learn' => '学习',
@@ -153,7 +153,7 @@ module Jekyll
     # use their own name= sizes.
     def thumb(src, width)
       if (key = src[MIRRORED, 1])
-        "https://cdn.blog.yuzhupeng.top/notes/#{width}/#{key}.webp"
+        "#{SITE_URL}/notes/#{width}/#{key}.webp"
       else
         src.sub('name=large', width > 700 ? 'name=medium' : 'name=small')
       end

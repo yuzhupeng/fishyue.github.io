@@ -37,8 +37,14 @@ module Jekyll
         .reverse
     end
 
+    # 站点 permalink 是 /post/:title/（结尾带斜杠，没有 .html），此时 doc.url
+    # 形如 /post/foo/，直接 sub(/\.html\z/) 匹配不到，会原样返回目录路径，
+    # 写入时与已生成的目录同名 -> Errno::EISDIR。两种形式都要覆盖。
     def self.md_path(doc)
-      doc.url.sub(/\.html\z/, '.md')
+      url = doc.url
+      return url.sub(/\.html\z/, '.md') if url.end_with?('.html')
+      return url.sub(/\/(?:index\.html)?\z/, '.md') if url.end_with?('/')
+      "#{url}.md"
     end
 
     # Liquid that the posts use, turned back into plain Markdown.

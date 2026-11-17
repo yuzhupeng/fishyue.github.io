@@ -111,7 +111,14 @@
 
   <link rel="canonical" href="{{ canonical | escape }}">
   {% if page.collection == 'posts' or page.collection == 'posts_en' %}{% unless page.layout == 'ppt' %}
-  <link rel="alternate" type="text/markdown" href="{{ site.url }}{{ page.url | replace: '.html', '.md' }}" title="Markdown">
+  {%- comment -%} permalink 是 /post/:title/，页面 URL 以斜杠结尾，替换 .html 无效，
+      这里显式处理两种形式，保证 alternate 链接与实际生成的 .md 一致。 {%- endcomment -%}
+  {%- if page.url contains '.html' -%}
+  {%- assign markdown_url = page.url | replace: '.html', '.md' -%}
+  {%- else -%}
+  {%- assign markdown_url = page.url | append: '.md' | replace: '//.md', '.md' -%}
+  {%- endif -%}
+  <link rel="alternate" type="text/markdown" href="{{ site.url }}{{ markdown_url }}" title="Markdown">
   {% endunless %}{% endif %}
 
   <!-- Hreflang for multilingual content -->
